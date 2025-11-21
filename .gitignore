@@ -1,0 +1,44 @@
+# --- Python e Django ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Banco de dados local (Geralmente não se comita o SQLite de dev)
+db.sqlite3
+
+# Arquivos de log
+*.log
+
+# --- Ambiente Virtual (Essencial ignorar) ---
+venv/
+env/
+.venv/
+bin/
+
+# --- Variáveis de Ambiente e Segurança (CRÍTICO) ---
+.env
+.env.local
+config.py
+
+# --- Arquivos Estáticos e Mídia ---
+# A pasta media contém uploads de teste locais, não devem ir pro repo
+media/
+# A pasta staticfiles é gerada pelo collectstatic, não precisa ir pro repo
+staticfiles/
+
+# --- IDEs e Sistema Operacional ---
+# Configurações do VS Code, PyCharm, Mac, Windows
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# --- Futuro Front-end (React/Node) ---
+# Já deixando preparado para quando você criar a pasta do front
+node_modules/
+build/
+dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnp.*
