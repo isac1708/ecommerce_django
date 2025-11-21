@@ -6,6 +6,9 @@ urlpatterns = [
     path('latest-products/', views.LatestProductsList.as_view()),
     # Nova rota para buscar detalhes do produto
     # Ex: /api/v1/products/eletronicos/iphone-15/
+
+    path('products/search/', views.Search.as_view()),
+    
     path('products/<slug:category_slug>/<slug:product_slug>/', views.ProductDetail.as_view()),
 
     # Nova rota para buscar categoria

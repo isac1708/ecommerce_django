@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -36,3 +37,17 @@ class CategoryDetail(APIView):#Busca a categoria e passa pelo serializer, ele j�
         category = self.get_object(category_slug)
         serializer = CategorySerializer(category)
         return Response(serializer.data)
+
+class Search(APIView):
+    def post(self, request, format=None):
+        query = request.data.get('query', '') # Pega o termo enviado
+
+        # Busca onde o nome CONTÉM o termo OU a descrição CONTÉM o termo
+        # icontains = Case Insensitive (ignora maiúscula/minúscula)
+        if query:
+            products = Product.objects.filter(Q(name__icontains=query) | Q(description__icontains=query))
+            serializer = ProductSerializer(products, many=True)
+            return Response(serializer.data)
+
+        # Se não tiver query, retorna lista vazia
+        return Response([])
